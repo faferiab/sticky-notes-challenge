@@ -1,0 +1,28 @@
+.mol-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+  background: transparent;
+  border: none;
+  padding: 0;
+  z-index: 1;
+}
+
+.mol-resize-handle::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #888;
+  border-bottom: 2px solid #888;
+}
+
+.mol-resize-handle:focus-visible {
+  outline: 2px solid #4a90d9;
+  outline-offset: 2px;
+}

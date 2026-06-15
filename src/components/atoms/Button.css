@@ -1,0 +1,25 @@
+.atom-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  background: #e8e8e8;
+  color: #1a1a1a;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.atom-button:hover {
+  background: #d0d0d0;
+}
+
+.atom-button:focus-visible {
+  outline: 2px solid #4a90d9;
+  outline-offset: 2px;
+}

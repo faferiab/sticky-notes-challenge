@@ -1,0 +1,10 @@
+.mol-color-picker {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 4px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}

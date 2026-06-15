@@ -1,0 +1,33 @@
+.mol-note-header {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 8px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mol-note-header:active {
+  cursor: grabbing;
+}
+
+.mol-note-header-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.mol-note-header-handle {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.5px;
+}

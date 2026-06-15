@@ -1,0 +1,6 @@
+.org-notes-canvas {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}

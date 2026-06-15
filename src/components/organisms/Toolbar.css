@@ -1,0 +1,14 @@
+.org-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  min-height: 56px;
+  box-sizing: border-box;
+}
+
+.org-toolbar-create {
+  white-space: nowrap;
+}
