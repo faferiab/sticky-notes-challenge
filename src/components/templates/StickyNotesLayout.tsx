@@ -74,8 +74,6 @@ export function StickyNotesLayout() {
     [notes, setActiveNote],
   )
 
-  globalSelectedColor = selectedColor
-
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (!activeNoteId) return
@@ -151,6 +149,10 @@ export function StickyNotesLayout() {
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
+
+  useLayoutEffect(() => {
+    globalSelectedColor = selectedColor
+  }, [selectedColor])
 
   return (
     <div className="tmp-sticky-notes-layout">

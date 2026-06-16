@@ -26,3 +26,4 @@ dist-ssr
 .devcontainer/
 .opencode/
 playwright-report/
+test-results/
