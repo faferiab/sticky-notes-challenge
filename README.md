@@ -83,3 +83,5 @@ WCAG 2.2 AAA compliant:
 ## Architecture
 
 Atomic Design component hierarchy with strict layering: Atoms → Molecules → Organisms → Templates → Pages. State managed via Zustand with Repository Pattern for persistence. Pointer Events for drag/resize interactions with pointer capture for reliable multi-browser support.
+
+Deployed at: [Live](https://sticky-notes-challenge.onrender.com)
