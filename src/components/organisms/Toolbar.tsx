@@ -13,7 +13,10 @@ export function Toolbar({ selectedColor, onSelectColor }: ToolbarProps) {
 
   return (
     <div className="org-toolbar" role="toolbar" aria-label="Note toolbar">
-      <Button className="org-toolbar-create" onClick={() => createNote(undefined, undefined, selectedColor)}>
+      <Button
+        className="org-toolbar-create"
+        onClick={() => createNote(undefined, undefined, selectedColor)}
+      >
         + Create Note
       </Button>
       <ColorPicker selectedColor={selectedColor} onSelectColor={onSelectColor} />

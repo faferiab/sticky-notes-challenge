@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useLayoutEffect } from 'react'
 import type { NoteColor } from '../../domain/note'
 import { NOTE_COLORS } from '../../domain/note'
 import { useNoteStore } from '../../store'
@@ -11,10 +11,18 @@ import { NotesCanvas } from '../organisms/NotesCanvas'
 import { TrashZone } from '../organisms/TrashZone'
 import './StickyNotesLayout.css'
 
+let globalSelectedColor: NoteColor = 'yellow'
+
+document.addEventListener('keydown', (e) => {
+  if ((e.key === 'n' || e.key === 'N') && !e.ctrlKey && !e.metaKey) {
+    e.preventDefault()
+    useNoteStore.getState().createNote(undefined, undefined, globalSelectedColor)
+  }
+})
+
 export function StickyNotesLayout() {
   usePersistence()
   const [selectedColor, setSelectedColor] = useState<NoteColor>(NOTE_COLORS[0])
-  const createNote = useNoteStore((s) => s.createNote)
   const deleteNote = useNoteStore((s) => s.deleteNote)
   const moveNote = useNoteStore((s) => s.moveNote)
   const resizeNote = useNoteStore((s) => s.resizeNote)
@@ -119,14 +127,6 @@ export function StickyNotesLayout() {
           e.preventDefault()
           bringToFront(note.id)
           break
-        case 'n':
-        case 'N':
-          if (!e.ctrlKey && !e.metaKey) {
-            e.preventDefault()
-            createNote(undefined, undefined, selectedColor)
-            liveAnnounce('New note created')
-          }
-          break
         case 'Tab':
           e.preventDefault()
           focusNextNote(note.id, e.shiftKey ? -1 : 1)
@@ -140,17 +140,19 @@ export function StickyNotesLayout() {
       resizeNote,
       deleteNote,
       bringToFront,
-      createNote,
       liveAnnounce,
       focusNextNote,
-      selectedColor,
     ],
   )
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
+
+  useLayoutEffect(() => {
+    globalSelectedColor = selectedColor
+  }, [selectedColor])
 
   return (
     <div className="tmp-sticky-notes-layout">
