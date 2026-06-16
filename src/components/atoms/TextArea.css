@@ -10,7 +10,8 @@
   background: transparent;
   color: inherit;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .atom-textarea:focus {
