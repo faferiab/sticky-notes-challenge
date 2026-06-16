@@ -28,9 +28,20 @@ export function usePersistence() {
   }, [])
 
   useEffect(() => {
+    const unsub = useNoteStore.subscribe(() => {
+      const { notes } = useNoteStore.getState()
+      localStorage.setItem('sticky-notes', JSON.stringify(notes))
+    })
+
+    return () => {
+      unsub()
+    }
+  }, [])
+
+  useEffect(() => {
     const debouncedSave = debounce(async () => {
       const { notes } = useNoteStore.getState()
-      await Promise.all([localStorageRepo.save(notes), mockApiRepo.save(notes)])
+      await mockApiRepo.save(notes)
     }, SAVE_DEBOUNCE_MS)
 
     const unsub = useNoteStore.subscribe(() => {
